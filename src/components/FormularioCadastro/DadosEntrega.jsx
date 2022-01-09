@@ -1,10 +1,25 @@
 import { Button, TextField } from "@material-ui/core";
-import React from "react";
+import React, { useState } from "react";
 
-function DadosEntrega() {
+function DadosEntrega({ aoEnviar }) {
+  const [cep, setCep] = useState("");
+  const [endereco, setEndereco] = useState("");
+  const [numero, setNumero] = useState("");
+  const [estado, setEstado] = useState("");
+  const [cidade, setCidade] = useState("");
+
   return (
-    <form action="">
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+        aoEnviar({ cep, endereco, numero, estado, cidade });
+      }}
+    >
       <TextField
+        value={cep}
+        onChange={(event) => {
+          setCep(event.target.value);
+        }}
         name="cep"
         id="cep"
         label="cep"
@@ -15,6 +30,10 @@ function DadosEntrega() {
       />
 
       <TextField
+        value={endereco}
+        onChange={(event) => {
+          setEndereco(event.target.value);
+        }}
         name="endereco"
         id="endereco"
         label="endereco"
@@ -25,6 +44,10 @@ function DadosEntrega() {
       />
 
       <TextField
+        value={numero}
+        onChange={(event) => {
+          setNumero(event.target.value);
+        }}
         name="numero"
         id="numero"
         label="numero"
@@ -34,6 +57,10 @@ function DadosEntrega() {
       />
 
       <TextField
+        value={estado}
+        onChange={(event) => {
+          setEstado(event.target.value);
+        }}
         name="estado"
         id="estado"
         label="estado"
@@ -44,6 +71,10 @@ function DadosEntrega() {
       />
 
       <TextField
+        value={cidade}
+        onChange={(event) => {
+          setCidade(event.target.value);
+        }}
         name="cidade"
         id="cidade"
         label="cidade"
